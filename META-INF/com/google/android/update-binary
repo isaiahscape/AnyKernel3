@@ -442,10 +442,12 @@ do_modules() {
       umask $umask;
       /system/bin/chcon -hR "u:object_r:system_file:s0" $moddir;
       [ "$umountksu" ] && umount /data/adb/modules_update;
+      return 0;
     else
-      ui_print "Magisk/KernelSU installation not found. Skipped!";
+      ui_print "Magisk/KernelSU installation not found.";
     fi;
-  else
+  fi
+
     cd $AKHOME/modules;
     ui_print " " "Pushing modules...";
     if [ -d /dev/block/mapper ]; then
@@ -460,7 +462,7 @@ do_modules() {
       (mount -o rw,remount -t auto /vendor;
       mount -o rw,remount -t auto /product) 2>/dev/null;
     fi;
-    for module in $(find . -name '*.ko'); do
+    for module in $(find . -name -type f); do
       modtarget=$POSTINSTALL$(echo $module | cut -c2-);
       if [ ! -e $modtarget ]; then
         case $module in
@@ -488,7 +490,7 @@ do_modules() {
       (mount -o ro,remount -t auto /vendor;
       mount -o ro,remount -t auto /product) 2>/dev/null;
     fi;
-  fi;
+
   cd $AKHOME;
 }
 
