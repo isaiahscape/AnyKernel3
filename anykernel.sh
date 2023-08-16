@@ -4,13 +4,13 @@
 ### AnyKernel setup
 # global properties
 properties() { '
-kernel.string=
+kernel.string=LineageOS Kernel for ysl by Its_Vixano @ XDA
 do.devicecheck=1
 do.modules=0
 do.systemless=1
 do.cleanup=1
 do.cleanuponabort=0
-device.name1=
+device.name1=ysl
 supported.versions=
 supported.patchlevels=
 '; } # end properties
@@ -24,7 +24,7 @@ set_perm_recursive 0 0 750 750 $ramdisk/init* $ramdisk/sbin;
 } # end attributes
 
 # boot shell variables
-block=;
+block=/dev/block/bootdevice/by-name/boot;
 is_slot_device=0;
 ramdisk_compression=auto;
 patch_vbmeta_flag=auto;
