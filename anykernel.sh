@@ -4,13 +4,13 @@
 ### AnyKernel setup
 # global properties
 properties() { '
-kernel.string=
+kernel.string=LineageOS Kernel for lisa by Its_Vixano @ XDA
 do.devicecheck=1
-do.modules=0
-do.systemless=1
+do.modules=1
+do.systemless=0
 do.cleanup=1
 do.cleanuponabort=0
-device.name1=
+device.name1=lisa
 supported.versions=
 supported.patchlevels=
 '; } # end properties
@@ -24,8 +24,8 @@ set_perm_recursive 0 0 750 750 $ramdisk/init* $ramdisk/sbin;
 } # end attributes
 
 # boot shell variables
-block=;
-is_slot_device=0;
+block=boot;
+is_slot_device=1;
 ramdisk_compression=auto;
 patch_vbmeta_flag=auto;
 
@@ -78,22 +78,22 @@ write_boot; # use flash_boot to skip ramdisk repack, e.g. for devices with init_
 
 
 ## vendor_boot files attributes
-#vendor_boot_attributes() {
-#set_perm_recursive 0 0 755 644 $ramdisk/*;
-#set_perm_recursive 0 0 750 750 $ramdisk/init* $ramdisk/sbin;
-#} # end attributes
+vendor_boot_attributes() {
+set_perm_recursive 0 0 755 644 $ramdisk/*;
+set_perm_recursive 0 0 750 750 $ramdisk/init* $ramdisk/sbin;
+} # end attributes
 
-# vendor_boot shell variables
-#block=vendor_boot;
-#is_slot_device=1;
-#ramdisk_compression=auto;
-#patch_vbmeta_flag=auto;
+ vendor_boot shell variables
+block=vendor_boot;
+is_slot_device=1;
+ramdisk_compression=auto;
+patch_vbmeta_flag=auto;
 
 # reset for vendor_boot patching
-#reset_ak;
+reset_ak;
 
 # vendor_boot install
-#dump_boot; # use split_boot to skip ramdisk unpack, e.g. for dtb on devices with hdr v4 but no vendor_kernel_boot
+dump_boot; # use split_boot to skip ramdisk unpack, e.g. for dtb on devices with hdr v4 but no vendor_kernel_boot
 
-#write_boot; # use flash_boot to skip ramdisk repack, e.g. for dtb on devices with hdr v4 but no vendor_kernel_boot
+write_boot; # use flash_boot to skip ramdisk repack, e.g. for dtb on devices with hdr v4 but no vendor_kernel_boot
 ## end vendor_boot install
