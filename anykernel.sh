@@ -4,13 +4,15 @@
 ### AnyKernel setup
 # global properties
 properties() { '
-kernel.string=
+kernel.string=LineageOS Kernel for rioy by Its_Vixano @ XDA
 do.devicecheck=1
 do.modules=0
 do.systemless=1
 do.cleanup=1
 do.cleanuponabort=0
-device.name1=
+device.name1=rioy
+device.name2=rioya
+device.name3=rioyb
 supported.versions=
 supported.patchlevels=
 supported.vendorpatchlevels=
@@ -25,8 +27,8 @@ set_perm_recursive 0 0 750 750 $RAMDISK/init* $RAMDISK/sbin;
 } # end attributes
 
 # boot shell variables
-BLOCK=;
-IS_SLOT_DEVICE=0;
+BLOCK=boot;
+IS_SLOT_DEVICE=1;
 RAMDISK_COMPRESSION=auto;
 PATCH_VBMETA_FLAG=auto;
 
