@@ -4,7 +4,7 @@
 ### AnyKernel setup
 # global properties
 properties() { '
-kernel.string=LineageOS Kernel for lisa by Its_Vixano @ XDA
+kernel.string=Quickscrap KernelSU for lisa by @isaiahscape, @ItsVixano
 do.devicecheck=1
 do.modules=1
 do.systemless=0
